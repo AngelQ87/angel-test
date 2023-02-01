@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angel-test
+spec:
+  selector:
+    matchLabels:
+      app: angel-test
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: angel-test
+    spec:
+      containers:
+      - name: angel-test
+        image: angel-test:1.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
